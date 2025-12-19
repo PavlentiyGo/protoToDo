@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package todolist;
+
+option go_package = "goryachev.sso.v1;ssov1";
+
+service ToDoData{
+  rpc CreateTask (CreateTaskRequest) returns (CreateTaskResponse);
+  rpc GetTasks (GetTasksRequest) returns (GetTasksResponse);
+  rpc DeleteTask (DeleteTaskRequest) returns (DeleteTaskResponse);
+  rpc DoneTask (DoneTaskRequest) returns (DoneTaskResponse);
+}
+message CreateTaskRequest{
+  string title = 1;
+  string description = 2;
+  bool done = 3;
+}
+message CreateTaskResponse{
+    int64 id = 1;
+}
+
+message GetTasksRequest{
+  optional int64 id = 1;
+}
+
+message Todo {
+  string title = 1;
+  string description = 2;
+  bool done = 3;
+}
+
+message GetTasksResponse{
+  map<int64,Todo> todos = 1;
+}
+
+message DeleteTaskRequest{
+  int64 title = 1;
+}
+
+message DeleteTaskResponse{
+}
+
+message DoneTaskRequest{
+  int64 id = 1;
+}
+
+message DoneTaskResponse{
+}
+

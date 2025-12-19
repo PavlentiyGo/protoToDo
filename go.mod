@@ -1,1 +1,1 @@
-module https://github.com/PavlentiyGo/protoToDo
+module github.com/PavlentiyGo/protoToDo

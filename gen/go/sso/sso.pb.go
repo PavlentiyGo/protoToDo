@@ -25,7 +25,6 @@ type CreateTaskRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Title         string                 `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
 	Description   string                 `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
-	Done          bool                   `protobuf:"varint,3,opt,name=done,proto3" json:"done,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -72,13 +71,6 @@ func (x *CreateTaskRequest) GetDescription() string {
 		return x.Description
 	}
 	return ""
-}
-
-func (x *CreateTaskRequest) GetDone() bool {
-	if x != nil {
-		return x.Done
-	}
-	return false
 }
 
 type CreateTaskResponse struct {
@@ -275,7 +267,7 @@ func (x *GetTasksResponse) GetTodos() map[int64]*Todo {
 
 type DeleteTaskRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Title         int64                  `protobuf:"varint,1,opt,name=title,proto3" json:"title,omitempty"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -310,9 +302,9 @@ func (*DeleteTaskRequest) Descriptor() ([]byte, []int) {
 	return file_sso_sso_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *DeleteTaskRequest) GetTitle() int64 {
+func (x *DeleteTaskRequest) GetId() int64 {
 	if x != nil {
-		return x.Title
+		return x.Id
 	}
 	return 0
 }
@@ -437,11 +429,10 @@ var File_sso_sso_proto protoreflect.FileDescriptor
 
 const file_sso_sso_proto_rawDesc = "" +
 	"\n" +
-	"\rsso/sso.proto\x12\btodolist\"_\n" +
+	"\rsso/sso.proto\x12\btodolist\"K\n" +
 	"\x11CreateTaskRequest\x12\x14\n" +
 	"\x05title\x18\x01 \x01(\tR\x05title\x12 \n" +
-	"\vdescription\x18\x02 \x01(\tR\vdescription\x12\x12\n" +
-	"\x04done\x18\x03 \x01(\bR\x04done\"$\n" +
+	"\vdescription\x18\x02 \x01(\tR\vdescription\"$\n" +
 	"\x12CreateTaskResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\"-\n" +
 	"\x0fGetTasksRequest\x12\x13\n" +
@@ -456,9 +447,9 @@ const file_sso_sso_proto_rawDesc = "" +
 	"\n" +
 	"TodosEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x03R\x03key\x12$\n" +
-	"\x05value\x18\x02 \x01(\v2\x0e.todolist.TodoR\x05value:\x028\x01\")\n" +
-	"\x11DeleteTaskRequest\x12\x14\n" +
-	"\x05title\x18\x01 \x01(\x03R\x05title\"\x14\n" +
+	"\x05value\x18\x02 \x01(\v2\x0e.todolist.TodoR\x05value:\x028\x01\"#\n" +
+	"\x11DeleteTaskRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"\x14\n" +
 	"\x12DeleteTaskResponse\"!\n" +
 	"\x0fDoneTaskRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\"\x12\n" +
